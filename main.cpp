@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
 //#endif
 
     // Log settings
-    Monero::Wallet::init(argv[0], "electronero-wallet-gui");
+    Monero::Wallet::init(argv[0], "pulse-wallet-gui");
 //    qInstallMessageHandler(messageHandler);
 
     MainApp app(argc, argv);
@@ -89,8 +89,8 @@ int main(int argc, char *argv[])
     qDebug() << "app startd";
 
     app.setApplicationName("monero-core");
-    app.setOrganizationDomain("electronero.org");
-    app.setOrganizationName("electronero-project");
+    app.setOrganizationDomain("electroneropulse.org");
+    app.setOrganizationName("electronero-pulse");
 
     #if defined(Q_OS_LINUX) && !defined(Q_OS_ANDROID)
     app.setWindowIcon(QIcon(":/images/appicon.ico"));
