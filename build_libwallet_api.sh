@@ -1,8 +1,8 @@
 #!/bin/bash
 
 
-# MONERO_URL=https://github.com/shopglobal/electronero.git
-# MONERO_BRANCH=master
+# MONERO_URL=https://github.com/electronero-pulse/electronero.git
+# MONERO_BRANCH=release
 CPU_CORE_COUNT=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || sysctl -n hw.ncpu)
 pushd $(pwd)
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -11,7 +11,7 @@ source $ROOT_DIR/utils.sh
 
 
 INSTALL_DIR=$ROOT_DIR/wallet
-MONERO_DIR=$ROOT_DIR/electronero
+MONERO_DIR=$ROOT_DIR/electroneropulse
 
 
 mkdir -p $MONERO_DIR/build/release
