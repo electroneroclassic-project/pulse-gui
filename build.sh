@@ -63,7 +63,7 @@ fi
 source ./utils.sh
 pushd $(pwd)
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-ELECTRONERO_DIR=electronero
+ELECTRONERO_DIR=electroneropulse
 PULSED_EXEC=pulsed
 
 MAKE='make'
