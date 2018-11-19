@@ -91,7 +91,7 @@ if [ "$ANDROID" != true ] && ([ "$platform" == "linux32" ] || [ "$platform" == "
 fi
 
 if [ "$platform" == "darwin" ]; then
-    BIN_PATH=$BIN_PATH/electronero-wallet-gui.app/Contents/MacOS/
+    BIN_PATH=$BIN_PATH/pulse-wallet-gui.app/Contents/MacOS/
 elif [ "$platform" == "mingw64" ] || [ "$platform" == "mingw32" ]; then
     PULSED_EXEC=pulsed.exe
 fi
@@ -109,7 +109,7 @@ if ! QMAKE=$(find_command qmake qmake-qt5); then
     echo "Failed to find suitable qmake command."
     exit 1
 fi
-$QMAKE ../electronero-wallet-gui.pro "$CONFIG" || exit
+$QMAKE ../pulse-wallet-gui.pro "$CONFIG" || exit
 $MAKE || exit 
 
 # Copy pulsed to bin folder
