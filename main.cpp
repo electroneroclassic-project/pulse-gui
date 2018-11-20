@@ -239,7 +239,7 @@ int main(int argc, char *argv[])
 
 
     if (!moneroAccountsRootDir.empty()) {
-        QString moneroAccountsDir = moneroAccountsRootDir.at(0) + "/Electronero/wallets";
+        QString moneroAccountsDir = moneroAccountsRootDir.at(0) + "/ElectroneroPulse/wallets";
         engine.rootContext()->setContextProperty("moneroAccountsDir", moneroAccountsDir);
     }
 
