@@ -5,3 +5,7 @@
 	path = electronero
 	url = https://github.com/electronero/electronero
 	branch = release
+[submodule "electroneropulse"]
+	path = electroneropulse
+	url = https://github.com/electronero-pulse/electroneropulse
+	branch = release
