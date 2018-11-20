@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
 //#endif
 
     // Log settings
-    Monero::Wallet::init(argv[0], "electronero-wallet-gui");
+    Monero::Wallet::init(argv[0], "pulse-wallet-gui");
 //    qInstallMessageHandler(messageHandler);
 
     MainApp app(argc, argv);
@@ -89,8 +89,8 @@ int main(int argc, char *argv[])
     qDebug() << "app startd";
 
     app.setApplicationName("monero-core");
-    app.setOrganizationDomain("electronero.org");
-    app.setOrganizationName("electronero-project");
+    app.setOrganizationDomain("electroneropulse.org");
+    app.setOrganizationName("electronero-pulse");
 
     #if defined(Q_OS_LINUX) && !defined(Q_OS_ANDROID)
     app.setWindowIcon(QIcon(":/images/appicon.ico"));
@@ -284,20 +284,18 @@ int main(int argc, char *argv[])
     }
     else{
         // Fallback values in case something wrong reading config file
-        localAddresses.append("ronode.electroneropulse.org");
+	localAddresses.append("nynode.electroneropulse.org");
         localAddresses.append("poolitaly.electroneropulse.org");
-        localAddresses.append("nynode.electroneropulse.org");
-        localPorts.append("12090");
         localPorts.append("20393");
+	localPorts.append("12090");
+	localCoins.append("ETNXP");
         localCoins.append("ETNX");
-        localCoins.append("ETNXP");
-        remoteAddresses.append("ronode.electroneropulse.org");
-        remoteAddresses.append("poolitaly.electroneropulse.org");
         remoteAddresses.append("nynode.electroneropulse.org");
-        remotePorts.append("12090");
+        remoteAddresses.append("poolitaly.electroneropulse.org");
         remotePorts.append("20393");
-        remoteCoins.append("ETNX");
+	remotePorts.append("12090");
         remoteCoins.append("ETNXP");
+	remoteCoins.append("ETNX");
     }
 
     qWarning() << "local " << localAddresses << localPorts << localCoins;

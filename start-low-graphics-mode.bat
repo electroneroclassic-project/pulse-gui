@@ -2,4 +2,4 @@
 
 set QMLSCENE_DEVICE=softwarecontext
 
-start /b electronero-wallet-gui.exe
+start /b pulse-wallet-gui.exe

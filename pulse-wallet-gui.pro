@@ -2,7 +2,7 @@ TEMPLATE = app
 
 QT += qml quick widgets
 
-WALLET_ROOT=$$PWD/electronero
+WALLET_ROOT=$$PWD/electroneropulse
 
 CONFIG += c++11 link_pkgconfig
 packagesExist(libpcsclite) {
@@ -444,7 +444,7 @@ OTHER_FILES += \
 
 DISTFILES += \
     notes.txt \
-    electronero/src/wallet/CMakeLists.txt \
+    electroneropulse/src/wallet/CMakeLists.txt \
     components/MobileHeader.qml
 
 
