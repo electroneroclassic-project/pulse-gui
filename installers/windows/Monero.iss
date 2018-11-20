@@ -59,23 +59,23 @@ Source: "bin\pulse-wallet-gui.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "pulse-wallet-gui.log"; DestDir: "{app}"; Flags: onlyifdoesntexist; Permissions: users-modify
 
 ; Monero CLI wallet
-Source: "bin\electronero-wallet-cli.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\pulse-wallet-cli.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Monero wallet RPC interface implementation
-Source: "bin\electronero-wallet-rpc.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\pulse-wallet-rpc.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Monero daemon
-Source: "bin\electronerod.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\pulsed.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Monero daemon wrapped in a batch file that stops before the text window closes, to see any error messages
-Source: "electronero-daemon.bat"; DestDir: "{app}"; Flags: ignoreversion;
+Source: "pulse-daemon.bat"; DestDir: "{app}"; Flags: ignoreversion;
 
 ; Monero blockchain utilities
-Source: "bin\electronero-blockchain-export.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "bin\electronero-blockchain-import.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\pulse-blockchain-export.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\pulse-blockchain-import.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 ; was present in 0.10.3.1, not present anymore in 0.11.1.0 and after
-; Source: "bin\electronero-utils-deserialize.exe"; DestDir: "{app}"; Flags: ignoreversion
+; Source: "bin\pulse-utils-deserialize.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Various .qm files for translating the wallet UI "on the fly" into all supported languages
 Source: "bin\translations\*"; DestDir: "{app}\translations"; Flags: recursesubdirs ignoreversion
@@ -94,23 +94,23 @@ Source: "bin\audio\*"; DestDir: "{app}\audio"; Flags: recursesubdirs ignoreversi
 ; Qt bearer / network connection management
 Source: "bin\bearer\*"; DestDir: "{app}\bearer"; Flags: recursesubdirs ignoreversion
 
-; Qt Windows platform plugins	
+; Qt Windows platform plugins 
 Source: "bin\platforms\*"; DestDir: "{app}\platforms"; Flags: recursesubdirs ignoreversion
 Source: "bin\platforminputcontexts\*"; DestDir: "{app}\platforminputcontexts"; Flags: recursesubdirs ignoreversion
 Source: "bin\styles\*"; DestDir: "{app}\styles"; Flags: recursesubdirs ignoreversion
 
-; Qt support for SVG icons	
+; Qt support for SVG icons  
 Source: "bin\iconengines\*"; DestDir: "{app}\iconengines"; Flags: recursesubdirs ignoreversion
 
-; Qt support for various image formats (JPEG, BMP, SVG etc)	
+; Qt support for various image formats (JPEG, BMP, SVG etc) 
 Source: "bin\imageformats\*"; DestDir: "{app}\imageformats"; Flags: recursesubdirs ignoreversion
 
-; Qt multimedia support	
+; Qt multimedia support 
 Source: "bin\QtMultimedia\*"; DestDir: "{app}\QtMultimedia"; Flags: recursesubdirs ignoreversion
 Source: "bin\mediaservice\*"; DestDir: "{app}\mediaservice"; Flags: recursesubdirs ignoreversion
 
 ; Qt support for "m3u" playlists
-; candidate for elimination? Don't think the GUI wallet needs such playlists	
+; candidate for elimination? Don't think the GUI wallet needs such playlists  
 Source: "bin\playlistformats\*"; DestDir: "{app}\playlistformats"; Flags: recursesubdirs ignoreversion
 
 ; Qt graphical effects as part of the core runtime, effects like blurring and blending
@@ -326,7 +326,7 @@ begin
     // Re-build "electronero-daemon.bat" according to actual install and blockchain directory used
     SetArrayLength(s, 3);
     s[0] := 'REM Execute the Monero daemon and then stay with window open after it exits';
-    s[1] := '"' + ExpandConstant('{app}\electronerod.exe') + '" ' + DaemonFlags('');
+    s[1] := '"' + ExpandConstant('{app}\pulsed.exe') + '" ' + DaemonFlags('');
     s[2] := 'PAUSE';
     SaveStringsToFile(ExpandConstant('{app}\electronero-daemon.bat'), s, false); 
   end;
@@ -352,12 +352,12 @@ Name: "{group}\Uninstall GUI Wallet"; Filename: "{uninstallexe}"
 ; Sub-folder "Utilities";
 ; Note that Windows 10, unlike Windows 7, ignores such sub-folders completely
 ; and insists on displaying ALL icons on one single level
-Name: "{group}\Utilities\Monero Daemon"; Filename: "{app}\electronerod.exe"; Parameters: {code:DaemonFlags}
+Name: "{group}\Utilities\Monero Daemon"; Filename: "{app}\pulsed.exe"; Parameters: {code:DaemonFlags}
 Name: "{group}\Utilities\Read Me"; Filename: "{app}\ReadMe.htm"
 
 ; CLI wallet: Needs a working directory ("Start in:") set in the icon, because with no such directory set
 ; it tries to create new wallets without a path given in the probably non-writable program folder and will abort with an error
-Name: "{group}\Utilities\Textual (CLI) Wallet"; Filename: "{app}\electronero-wallet-cli.exe"; WorkingDir: "{userdocs}\Monero\wallets"
+Name: "{group}\Utilities\Textual (CLI) Wallet"; Filename: "{app}\pulse-wallet-cli.exe"; WorkingDir: "{userdocs}\Monero\wallets"
 
 ; Icons for troubleshooting problems / testing / debugging
 ; To show that they are in some way different (not for everyday use), make them visually different
@@ -368,7 +368,7 @@ Name: "{group}\Utilities\x (Check Default Wallet Folder)"; Filename: "{win}\Expl
 Name: "{group}\Utilities\x (Check GUI Wallet Log)"; Filename: "Notepad"; Parameters: "{app}\pulse-wallet-gui.log"
 Name: "{group}\Utilities\x (Try Daemon, Exit Confirm)"; Filename: "{app}\electronero-daemon.bat"
 Name: "{group}\Utilities\x (Try GUI Wallet Low Graphics Mode)"; Filename: "{app}\start-low-graphics-mode.bat"
-Name: "{group}\Utilities\x (Try Kill Daemon)"; Filename: "Taskkill.exe"; Parameters: "/IM electronerod.exe /T /F"
+Name: "{group}\Utilities\x (Try Kill Daemon)"; Filename: "Taskkill.exe"; Parameters: "/IM pulsed.exe /T /F"
 
 ; Desktop icons, optional with the help of the "Task" section
 Name: "{userdesktop}\GUI Wallet"; Filename: "{app}\pulse-wallet-gui.exe"; Tasks: desktopicon
